@@ -11,3 +11,7 @@ Soon you will find here code and solutions that we endorse with our seal of qual
 Do you think our solutions are good? Check if we are looking for [you](https://inetum.pl/oferty-pracy/)!
 
 🤔 Do you have any suggestions? Contact [@aamkye](https://github.com/aamkye) 📫
+
+---
+
+Inetum Poland adopts [Inetum Codes of Conduct](CODE_OF_CONDUCT.md) and [Inetum Security Policy](SECURITY.md).
