@@ -1,5 +1,3 @@
-# Inetum Poland
-
 ![Inetum Poland](/img/GitHub_cover_Inetum.jpg)
 
 🚀 We believe that there is no #innovation without opening up to new points of view, #ambition and thinking outside the box. 📦 That's why we decided to start to provide open source code/projects!
