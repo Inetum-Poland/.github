@@ -8,6 +8,19 @@ on:
     branches:
       - main
   workflow_call:
+    inputs:
+      GH_APP_ID:
+        type: string
+      GH_APP_INSTALLATION_ID:
+        type: string
+      TF_INPUT:
+        type: string
+      TF_IN_AUTOMATION:
+        type: string
+    secrets:
+      GH_APP_PEM_FILE:
+      TF_TOKEN_APP_TERRAFORM_IO:
+      TFE_TOKEN:
 
 concurrency:
   # Here we use the repository name to avoid conflicts with other repositories
@@ -16,6 +29,16 @@ concurrency:
   cancel-in-progress: true
 
 env:
+  # GH
+  GITHUB_APP_ID: ${{ vars.GH_APP_ID || inputs.GH_APP_ID }}
+  GITHUB_APP_INSTALLATION_ID: ${{ vars.GH_APP_INSTALLATION_ID || inputs.GH_APP_INSTALLATION_ID }}
+  GITHUB_APP_PEM_FILE: ${{ secrets.GH_APP_PEM_FILE }}
+  # TF
+  TF_INPUT: ${{ vars.TF_INPUT || inputs.TF_INPUT }}
+  TF_IN_AUTOMATION: ${{ vars.TF_IN_AUTOMATION || inputs.TF_IN_AUTOMATION }}
+  TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
+  TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
+  # Trivy
   ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   TRIVY_DB_REPOSITORY: public.ecr.aws/aquasecurity/trivy-db:2
 
