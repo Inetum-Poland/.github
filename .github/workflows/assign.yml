@@ -16,7 +16,9 @@ on:
   workflow_call:
 
 concurrency:
-  group: assign_${{ github.ref }}
+  # Here we use the repository name to avoid conflicts with other repositories
+  # Target repositories should use only `verify_${{ github.ref }}`
+  group: assign_${{ github.ref }}_${{ github.workflow }}_${{ github.repository }}
 
 permissions:
   pull-requests: write
