@@ -1,0 +1,22 @@
+name: "Mise"
+description: "Mise Installer"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Cache Mise
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.local/share/mise/shims/
+          ~/.local/bin/
+        key: ${{ runner.os }}-mise-${{ hashFiles('.mise.toml') }}
+
+    - shell: bash
+      run: |
+        sudo apt update
+        sudo apt install -y jq curl git bash
+        curl https://mise.run | sh
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
+        echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
+        mise install

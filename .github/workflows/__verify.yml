@@ -1,0 +1,47 @@
+name: "Verify"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_call:
+
+concurrency:
+  group: verify_${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  TRIVY_DB_REPOSITORY: public.ecr.aws/aquasecurity/trivy-db:2
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  secrets:
+    name: "Secrets"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/trufflehog
+
+  vulnerabilites:
+    name: "Vulnerabilites"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/trivy
+
+  pre_commit:
+    name: "Pre-Commit"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/mise
+      - uses: ./.github/actions/pre_commit

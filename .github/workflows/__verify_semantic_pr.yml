@@ -1,0 +1,38 @@
+name: "Verify"
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - edited
+  workflow_call:
+
+# https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token#defining-access-for-the-github_token-permissions
+permissions:
+  pull-requests: write
+  statuses: write
+  # Default
+  actions: read
+  attestations: read
+  checks: read
+  contents: read
+  deployments: read
+  discussions: read
+  id-token: none
+  issues: read
+  packages: read
+  pages: read
+  repository-projects: read
+  security-events: read
+
+jobs:
+  semantic_pr:
+    name: "Semantic PR"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/semantic_pr
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
