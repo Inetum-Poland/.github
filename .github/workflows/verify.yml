@@ -10,7 +10,7 @@ on:
   workflow_call:
 
 concurrency:
-  group: verify_${{ github.ref }}
+  group: verify_${{ github.ref }}_${{ github.workflow }}
   cancel-in-progress: true
 
 env:
