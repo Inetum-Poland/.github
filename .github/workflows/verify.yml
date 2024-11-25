@@ -10,7 +10,7 @@ on:
   workflow_call:
 
 concurrency:
-  group: verify_${{ github.ref }}_${{ github.workflow }}
+  group: verify_${{ github.ref }}_${{ github.workflow }}_${{ github.repository }}
   cancel-in-progress: true
 
 env:
@@ -29,19 +29,35 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - uses: ./.github/actions/trufflehog
+        if: github.repository == 'Inetum-Poland/.github'
+      - uses: Inetum-Poland/.github/.github/actions/trufflehog@main
+        if: github.repository != 'Inetum-Poland/.github'
 
   vulnerabilites:
     name: "Vulnerabilites"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: ./.github/actions/trivy
+        if: github.repository == 'Inetum-Poland/.github'
+      - uses: Inetum-Poland/.github/.github/actions/trivy@main
+        if: github.repository != 'Inetum-Poland/.github'
 
   pre_commit:
     name: "Pre-Commit"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: ./.github/actions/mise
+        if: github.repository == 'Inetum-Poland/.github'
+      - uses: Inetum-Poland/.github/.github/actions/mise@main
+        if: github.repository != 'Inetum-Poland/.github'
+
       - uses: ./.github/actions/pre_commit
+        if: github.repository == 'Inetum-Poland/.github'
+      - uses: Inetum-Poland/.github/.github/actions/pre_commit@main
+        if: github.repository != 'Inetum-Poland/.github'
