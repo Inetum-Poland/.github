@@ -33,6 +33,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: ./.github/actions/semantic_pr
+        if: github.repository == 'Inetum-Poland/.github'
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: Inetum-Poland/.github/.github/actions/semantic_pr@main
+        if: github.repository != 'Inetum-Poland/.github'
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
