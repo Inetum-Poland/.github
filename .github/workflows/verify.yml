@@ -10,6 +10,8 @@ on:
   workflow_call:
 
 concurrency:
+  # Here we use the repository name to avoid conflicts with other repositories
+  # Target repositories should use only `verify_${{ github.ref }}`
   group: verify_${{ github.ref }}_${{ github.workflow }}_${{ github.repository }}
   cancel-in-progress: true
 
