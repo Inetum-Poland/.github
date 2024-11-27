@@ -1,18 +1,18 @@
 name: "Assign"
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-    types:
-      - labeled
-      - unlabeled
-      - opened
-      - reopened
-      - synchronize
+  # push:
+  #   branches:
+  #     - main
+  # pull_request:
+  #   branches:
+  #     - main
+  #   types:
+  #     - labeled
+  #     - unlabeled
+  #     - opened
+  #     - reopened
+  #     - synchronize
 
   workflow_call:
     inputs:
@@ -93,17 +93,17 @@ jobs:
       - id: bumper
         uses: inetum-poland/action-bumper@v3
         with:
-          bump_default_level: ${{ inputs.bump_default_level }}
-          bump_fail_if_no_level: ${{ inputs.bump_fail_if_no_level }}
-          bump_include_v: ${{ inputs.bump_include_v }}
-          bump_latest: ${{ inputs.bump_latest }}
-          bump_major: ${{ inputs.bump_major }}
-          bump_minor: ${{ inputs.bump_minor }}
-          bump_none: ${{ inputs.bump_none }}
-          bump_patch: ${{ inputs.bump_patch }}
-          bump_semver: ${{ inputs.bump_semver }}
-          bump_tag_as_email: ${{ inputs.bump_tag_as_email }}
-          bump_tag_as_user: ${{ inputs.bump_tag_as_user }}
+          bump_default_level: ${{ vars.bump_default_level || inputs.bump_default_level }}
+          bump_fail_if_no_level: ${{ vars.bump_fail_if_no_level || inputs.bump_fail_if_no_level }}
+          bump_include_v: ${{ vars.bump_include_v || inputs.bump_include_v }}
+          bump_latest: ${{ vars.bump_latest || inputs.bump_latest }}
+          bump_major: ${{ vars.bump_major || inputs.bump_major }}
+          bump_minor: ${{ vars.bump_minor || inputs.bump_minor }}
+          bump_none: ${{ vars.bump_none || inputs.bump_none }}
+          bump_patch: ${{ vars.bump_patch || inputs.bump_patch }}
+          bump_semver: ${{ vars.bump_semver || inputs.bump_semver }}
+          bump_tag_as_email: ${{ vars.bump_tag_as_email || inputs.bump_tag_as_email }}
+          bump_tag_as_user: ${{ vars.bump_tag_as_user || inputs.bump_tag_as_user }}
           github_token: ${{ secrets.github_token }}
 
       - uses: marocchino/sticky-pull-request-comment@v2
