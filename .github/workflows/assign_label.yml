@@ -15,7 +15,12 @@ on:
       - synchronize
 
   workflow_call:
-
+    inputs:
+      runs-on:
+        type: string
+        required: false 
+        default: 'ubuntu-latest'
+        
 concurrency:
   # Here we use the repository name to avoid conflicts with other repositories
   # Target repositories should use only `${{ github.workflow_ref }}_${{ github.ref }}`
@@ -28,6 +33,6 @@ permissions:
 jobs:
   label:
     name: "Label"
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runs-on }}
     steps:
       - uses: actions/labeler@v5

@@ -68,6 +68,10 @@ on:
         type: string
         description: "Name to use when creating tags"
         required: false
+      runs-on:
+        type: string
+        required: false 
+        default: 'ubuntu-latest'
 
 concurrency:
   # Here we use the repository name to avoid conflicts with other repositories
@@ -81,7 +85,7 @@ permissions:
 jobs:
   tag:
     name: "Tag"
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runs-on }}
     steps:
       - uses: actions/checkout@v4
 
