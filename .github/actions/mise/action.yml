@@ -18,6 +18,4 @@ runs:
         sudo apt install -y jq curl git bash
         curl https://mise.run | sh
         export PATH=$PATH:/home/runner/.local/bin
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
-        echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
-        mise install
+
