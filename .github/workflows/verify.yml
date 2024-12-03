@@ -51,6 +51,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install prerequisites
+        run: sudo apt update && sudo apt install -y --no-install-recommends git unzip curl make
+
       - uses: ./.github/actions/trufflehog
         if: github.repository == 'Inetum-Poland/.github'
       - uses: Inetum-Poland/.github/.github/actions/trufflehog@main
@@ -61,6 +64,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install prerequisites
+        run: sudo apt update && sudo apt install -y --no-install-recommends git unzip curl make
 
       - uses: ./.github/actions/trivy
         if: github.repository == 'Inetum-Poland/.github'
@@ -73,6 +79,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install prerequisites
+        run: sudo apt update && sudo apt install -y --no-install-recommends git unzip curl make
+        
       - uses: ./.github/actions/mise
         if: github.repository == 'Inetum-Poland/.github'
       - uses: Inetum-Poland/.github/.github/actions/mise@main
