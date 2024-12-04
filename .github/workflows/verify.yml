@@ -19,7 +19,7 @@ on:
         type: string
       runs-on:
         type: string
-        required: false 
+        required: false
         default: 'ubuntu-latest'
 
 concurrency:
@@ -85,10 +85,10 @@ jobs:
 
       - name: Install prerequisites
         run: sudo apt update && sudo apt install -y --no-install-recommends git unzip curl make
-        
+
       - uses: ./.github/actions/mise
         if: github.repository == 'Inetum-Poland/.github'
-      - uses: Inetum-Poland/.github/.github/actions/mise@feat/add-arc-prerequisites
+      - uses: Inetum-Poland/.github/.github/actions/mise@main
         if: github.repository != 'Inetum-Poland/.github'
 
       - uses: ./.github/actions/pre_commit
