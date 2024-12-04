@@ -17,6 +17,9 @@ on:
         type: string
       TF_IN_AUTOMATION:
         type: string
+      runs-on:
+        type: string
+        required: false
 
 concurrency:
   # Here we use the repository name to avoid conflicts with other repositories
@@ -45,11 +48,16 @@ defaults:
 jobs:
   secrets:
     name: "Secrets"
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runs-on || 'ubuntu-latest' }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - uses: ./.github/actions/prerequisites
+        if: github.repository == 'Inetum-Poland/.github'
+      - uses: Inetum-Poland/.github/.github/actions/prerequisites@main
+        if: github.repository != 'Inetum-Poland/.github'
 
       - uses: ./.github/actions/trufflehog
         if: github.repository == 'Inetum-Poland/.github'
@@ -58,9 +66,14 @@ jobs:
 
   vulnerabilites:
     name: "Vulnerabilites"
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runs-on || 'ubuntu-latest' }}
     steps:
       - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/prerequisites
+        if: github.repository == 'Inetum-Poland/.github'
+      - uses: Inetum-Poland/.github/.github/actions/prerequisites@main
+        if: github.repository != 'Inetum-Poland/.github'
 
       - uses: ./.github/actions/trivy
         if: github.repository == 'Inetum-Poland/.github'
@@ -69,9 +82,14 @@ jobs:
 
   pre_commit:
     name: "Pre-Commit"
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runs-on || 'ubuntu-latest' }}
     steps:
       - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/prerequisites
+        if: github.repository == 'Inetum-Poland/.github'
+      - uses: Inetum-Poland/.github/.github/actions/prerequisites@main
+        if: github.repository != 'Inetum-Poland/.github'
 
       - uses: ./.github/actions/mise
         if: github.repository == 'Inetum-Poland/.github'
