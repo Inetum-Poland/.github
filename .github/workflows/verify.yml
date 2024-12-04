@@ -56,7 +56,7 @@ jobs:
 
       - uses: ./.github/actions/prerequisites
         if: github.repository == 'Inetum-Poland/.github'
-      - uses: Inetum-Poland/.github/.github/actions/prerequisites@main
+      - uses: Inetum-Poland/.github/.github/actions/prerequisites@feat/add-arc-prerequisites
         if: github.repository != 'Inetum-Poland/.github'
 
       - uses: ./.github/actions/trufflehog
@@ -72,7 +72,7 @@ jobs:
 
       - uses: ./.github/actions/prerequisites
         if: github.repository == 'Inetum-Poland/.github'
-      - uses: Inetum-Poland/.github/.github/actions/prerequisites@main
+      - uses: Inetum-Poland/.github/.github/actions/prerequisites@feat/add-arc-prerequisites
         if: github.repository != 'Inetum-Poland/.github'
 
       - uses: ./.github/actions/trivy
@@ -88,7 +88,7 @@ jobs:
 
       - uses: ./.github/actions/prerequisites
         if: github.repository == 'Inetum-Poland/.github'
-      - uses: Inetum-Poland/.github/.github/actions/prerequisites@main
+      - uses: Inetum-Poland/.github/.github/actions/prerequisites@feat/add-arc-prerequisites
         if: github.repository != 'Inetum-Poland/.github'
 
       - uses: ./.github/actions/mise
