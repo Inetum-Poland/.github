@@ -40,6 +40,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: ./.github/actions/prerequisites
+        if: github.repository == 'Inetum-Poland/.github'
+      - uses: Inetum-Poland/.github/.github/actions/prerequisites@main
+        if: github.repository != 'Inetum-Poland/.github'
 
       - uses: ./.github/actions/semantic_pr
         if: github.repository == 'Inetum-Poland/.github'
