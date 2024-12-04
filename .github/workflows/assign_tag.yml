@@ -89,8 +89,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install prerequisites
-        run: sudo apt update && sudo apt install -y --no-install-recommends git unzip curl make
+      - uses: ./.github/actions/prerequisites
 
       - uses: jwalton/gh-find-current-pr@v1
         id: finder
