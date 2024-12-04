@@ -54,7 +54,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: ${{ github.repository == 'Inetum-Poland/.github' && './.github/actions/prerequisites' || 'Inetum-Poland/.github/.github/actions/prerequisites@feat/add-arc-prerequisites' }}
+      - uses: ./.github/actions/prerequisites
+        if: github.repository == 'Inetum-Poland/.github'
+      - uses: Inetum-Poland/.github/.github/actions/prerequisites@main
+        if: github.repository != 'Inetum-Poland/.github'
 
       - uses: ./.github/actions/trufflehog
         if: github.repository == 'Inetum-Poland/.github'
@@ -67,7 +70,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ${{ github.repository == 'Inetum-Poland/.github' && './.github/actions/prerequisites' || 'Inetum-Poland/.github/.github/actions/prerequisites@feat/add-arc-prerequisites' }}
+      - uses: ./.github/actions/prerequisites
+        if: github.repository == 'Inetum-Poland/.github'
+      - uses: Inetum-Poland/.github/.github/actions/prerequisites@main
+        if: github.repository != 'Inetum-Poland/.github'
 
       - uses: ./.github/actions/trivy
         if: github.repository == 'Inetum-Poland/.github'
@@ -80,7 +86,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ${{ github.repository == 'Inetum-Poland/.github' && './.github/actions/prerequisites' || 'Inetum-Poland/.github/.github/actions/prerequisites@feat/add-arc-prerequisites' }}
+      - uses: ./.github/actions/prerequisites
+        if: github.repository == 'Inetum-Poland/.github'
+      - uses: Inetum-Poland/.github/.github/actions/prerequisites@main
+        if: github.repository != 'Inetum-Poland/.github'
 
       - uses: ./.github/actions/mise
         if: github.repository == 'Inetum-Poland/.github'
