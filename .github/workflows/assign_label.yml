@@ -33,6 +33,6 @@ permissions:
 jobs:
   label:
     name: "Label"
-    runs-on: "${{ inputs.runs-on }} || 'ubuntu-latest'"
+    runs-on: ${{ inputs.runs-on || 'ubuntu-latest' }}
     steps:
       - uses: actions/labeler@v5
