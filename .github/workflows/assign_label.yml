@@ -19,7 +19,7 @@ on:
       runs-on:
         type: string
         required: false
-        default: "ubuntu-latest"
+        default: 'ubuntu-latest'
 
 concurrency:
   # Here we use the repository name to avoid conflicts with other repositories
@@ -33,6 +33,6 @@ permissions:
 jobs:
   label:
     name: "Label"
-    runs-on: ${{ inputs.runs-on }}
+    runs-on: "${{ inputs.runs-on }} || 'ubuntu-latest'"
     steps:
       - uses: actions/labeler@v5
