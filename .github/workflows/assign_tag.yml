@@ -88,10 +88,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ./.github/actions/prerequisites
-        if: github.repository == 'Inetum-Poland/.github'
-      - uses: Inetum-Poland/.github/.github/actions/prerequisites@feat/add-arc-prerequisites
-        if: github.repository != 'Inetum-Poland/.github'
+      - uses: ${{ github.repository == 'Inetum-Poland/.github' && './.github/actions/prerequisites' || 'Inetum-Poland/.github/.github/actions/prerequisites@feat/add-arc-prerequisites' }}
 
       - uses: jwalton/gh-find-current-pr@v1
         id: finder
