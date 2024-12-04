@@ -12,7 +12,6 @@ on:
       runs-on:
         type: string
         required: false
-        default: 'ubuntu-latest'
 
 # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token#defining-access-for-the-github_token-permissions
 permissions:
@@ -35,7 +34,7 @@ permissions:
 jobs:
   semantic_pr:
     name: "Semantic PR"
-    runs-on: ${{ inputs.runs-on }}
+    runs-on: ${{ inputs.runs-on || 'ubuntu-latest' }}
     steps:
       - uses: actions/checkout@v4
 
