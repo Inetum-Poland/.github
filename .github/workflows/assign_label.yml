@@ -19,7 +19,6 @@ on:
       runs-on:
         type: string
         required: false
-        default: 'ubuntu-latest'
 
 concurrency:
   # Here we use the repository name to avoid conflicts with other repositories
