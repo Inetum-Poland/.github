@@ -1,4 +1,4 @@
-<picture width="100">
+<picture width="80" align="middle" style="margin-bottom: 2em;">
   <source media="(prefers-color-scheme: dark)" srcset="/img/inetum_logo_light.png">
   <img src="/img/inetum_logo_dark.png">
 </picture>
