@@ -1,6 +1,6 @@
-<picture align="middle">
+<picture align="middle" style="margin-left: auto; margin-right: auto;">
   <source media="(prefers-color-scheme: dark)" srcset="/img/inetum_logo_light.png">
-  <img src="/img/inetum_logo_dark.png" width="80%" style="margin-left: auto; margin-right: auto;">
+  <img src="/img/inetum_logo_dark.png" width="80%">
 </picture>
 
 🚀 We start with impact! Therefore we believe that there is no innovation without opening up to new points of view, ambition and thinking outside the box. 📦 That's why we decided to start to provide open source code/projects!
