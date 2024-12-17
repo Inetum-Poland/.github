@@ -1,4 +1,4 @@
-<div align="middle" style="margin-left: auto; margin-right: auto; margin-bottom: 1em;">
+<div align="middle" style="margin-left: auto; margin-right: auto; margin-bottom: 25px; margin-top: 25px">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="/img/inetum_logo_light.png">
     <img src="/img/inetum_logo_dark.png" width="80%">
