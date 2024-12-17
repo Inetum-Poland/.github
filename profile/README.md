@@ -1,9 +1,11 @@
+</br>
 <div align="middle" style="margin-left: auto; margin-right: auto;">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="/img/inetum_logo_light.png">
-    <img src="/img/inetum_logo_dark.png" width="80%">
+    <img src="/img/inetum_logo_dark.png" width="85%">
   </picture>
 </div>
+</br>
 </br>
 </br>
 
