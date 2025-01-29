@@ -5,8 +5,8 @@ description: "Secret Scanning"
 runs:
   using: "composite"
   steps:
-    - name: TruffleHog
-      uses: trufflesecurity/trufflehog@main
-      with:
-        head: ${{ github.head_ref || github.ref_name }}
-        extra_args: --only-verified
+  - name: TruffleHog
+    uses: trufflesecurity/trufflehog@feat/test-draft
+    with:
+      head: ${{ github.head_ref || github.ref_name }}
+      extra_args: --only-verified

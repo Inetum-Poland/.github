@@ -33,5 +33,6 @@ jobs:
   label:
     name: "Label"
     runs-on: ${{ inputs.runs-on || 'ubuntu-latest' }}
+    if: github.event.pull_request.draft == false
     steps:
       - uses: actions/labeler@v5

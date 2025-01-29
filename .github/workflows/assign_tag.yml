@@ -3,10 +3,10 @@ name: "Assign"
 on:
   # push:
   #   branches:
-  #     - main
+  #     - feat/test-draft
   # pull_request:
   #   branches:
-  #     - main
+  #     - feat/test-draft
   #   types:
   #     - labeled
   #     - unlabeled
@@ -85,12 +85,13 @@ jobs:
   tag:
     name: "Tag"
     runs-on: ${{ inputs.runs-on || 'ubuntu-latest' }}
+    if: github.event.pull_request.draft == false
     steps:
       - uses: actions/checkout@v4
 
       - uses: ./.github/actions/prerequisites
         if: github.repository == 'Inetum-Poland/.github'
-      - uses: Inetum-Poland/.github/.github/actions/prerequisites@main
+      - uses: Inetum-Poland/.github/.github/actions/prerequisites@feat/test-draft
         if: github.repository != 'Inetum-Poland/.github'
 
       - uses: jwalton/gh-find-current-pr@v1
