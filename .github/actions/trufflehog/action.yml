@@ -6,7 +6,7 @@ runs:
   using: "composite"
   steps:
   - name: TruffleHog
-    uses: trufflesecurity/trufflehog@feat/test-draft
+    uses: trufflesecurity/trufflehog@main
     with:
       head: ${{ github.head_ref || github.ref_name }}
       extra_args: --only-verified
