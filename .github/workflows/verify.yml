@@ -5,6 +5,11 @@ on:
     branches:
       - main
   pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
     branches:
       - main
   workflow_call:
@@ -49,6 +54,7 @@ jobs:
   secrets:
     name: "Secrets"
     runs-on: ${{ inputs.runs-on || 'ubuntu-latest' }}
+    if: github.event.pull_request.draft == false
     steps:
       - uses: actions/checkout@v4
         with:
@@ -67,6 +73,7 @@ jobs:
   vulnerabilites:
     name: "Vulnerabilites"
     runs-on: ${{ inputs.runs-on || 'ubuntu-latest' }}
+    if: github.event.pull_request.draft == false
     steps:
       - uses: actions/checkout@v4
 
@@ -83,6 +90,7 @@ jobs:
   pre_commit:
     name: "Pre-Commit"
     runs-on: ${{ inputs.runs-on || 'ubuntu-latest' }}
+    if: github.event.pull_request.draft == false
     steps:
       - uses: actions/checkout@v4
 
