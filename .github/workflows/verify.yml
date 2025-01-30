@@ -9,7 +9,6 @@ on:
       - opened
       - reopened
       - synchronize
-      - edited
       - ready_for_review
     branches:
       - main
