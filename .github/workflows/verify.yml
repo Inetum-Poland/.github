@@ -57,12 +57,12 @@ jobs:
 
       - uses: ./.github/actions/prerequisites
         if: github.repository == 'Inetum-Poland/.github'
-      - uses: Inetum-Poland/.github/.github/actions/prerequisites@feat/test-draft
+      - uses: Inetum-Poland/.github/.github/actions/prerequisites@main
         if: github.repository != 'Inetum-Poland/.github'
 
       - uses: ./.github/actions/trufflehog
         if: github.repository == 'Inetum-Poland/.github'
-      - uses: Inetum-Poland/.github/.github/actions/trufflehog@feat/test-draft
+      - uses: Inetum-Poland/.github/.github/actions/trufflehog@main
         if: github.repository != 'Inetum-Poland/.github'
 
   vulnerabilites:
@@ -74,12 +74,12 @@ jobs:
 
       - uses: ./.github/actions/prerequisites
         if: github.repository == 'Inetum-Poland/.github'
-      - uses: Inetum-Poland/.github/.github/actions/prerequisites@feat/test-draft
+      - uses: Inetum-Poland/.github/.github/actions/prerequisites@main
         if: github.repository != 'Inetum-Poland/.github'
 
       - uses: ./.github/actions/trivy
         if: github.repository == 'Inetum-Poland/.github'
-      - uses: Inetum-Poland/.github/.github/actions/trivy@feat/test-draft
+      - uses: Inetum-Poland/.github/.github/actions/trivy@main
         if: github.repository != 'Inetum-Poland/.github'
 
   pre_commit:
@@ -91,15 +91,15 @@ jobs:
 
       - uses: ./.github/actions/prerequisites
         if: github.repository == 'Inetum-Poland/.github'
-      - uses: Inetum-Poland/.github/.github/actions/prerequisites@feat/test-draft
+      - uses: Inetum-Poland/.github/.github/actions/prerequisites@main
         if: github.repository != 'Inetum-Poland/.github'
 
       - uses: ./.github/actions/mise
         if: github.repository == 'Inetum-Poland/.github'
-      - uses: Inetum-Poland/.github/.github/actions/mise@feat/test-draft
+      - uses: Inetum-Poland/.github/.github/actions/mise@main
         if: github.repository != 'Inetum-Poland/.github'
 
       - uses: ./.github/actions/pre_commit
         if: github.repository == 'Inetum-Poland/.github'
-      - uses: Inetum-Poland/.github/.github/actions/pre_commit@feat/test-draft
+      - uses: Inetum-Poland/.github/.github/actions/pre_commit@main
         if: github.repository != 'Inetum-Poland/.github'

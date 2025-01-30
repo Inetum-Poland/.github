@@ -3,10 +3,10 @@ name: "Assign"
 on:
   # push:
   #   branches:
-  #     - feat/test-draft
+  #     - main
   # pull_request:
   #   branches:
-  #     - feat/test-draft
+  #     - main
   #   types:
   #     - labeled
   #     - unlabeled
@@ -91,7 +91,7 @@ jobs:
 
       - uses: ./.github/actions/prerequisites
         if: github.repository == 'Inetum-Poland/.github'
-      - uses: Inetum-Poland/.github/.github/actions/prerequisites@feat/test-draft
+      - uses: Inetum-Poland/.github/.github/actions/prerequisites@main
         if: github.repository != 'Inetum-Poland/.github'
 
       - uses: jwalton/gh-find-current-pr@v1

@@ -41,14 +41,14 @@ jobs:
 
       - uses: ./.github/actions/prerequisites
         if: github.repository == 'Inetum-Poland/.github'
-      - uses: Inetum-Poland/.github/.github/actions/prerequisites@feat/test-draft
+      - uses: Inetum-Poland/.github/.github/actions/prerequisites@main
         if: github.repository != 'Inetum-Poland/.github'
 
       - uses: ./.github/actions/semantic_pr
         if: github.repository == 'Inetum-Poland/.github'
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: Inetum-Poland/.github/.github/actions/semantic_pr@feat/test-draft
+      - uses: Inetum-Poland/.github/.github/actions/semantic_pr@main
         if: github.repository != 'Inetum-Poland/.github'
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
