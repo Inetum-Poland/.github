@@ -12,7 +12,7 @@ body:
         Thank you for taking the time to file a feature request.
         Please fill out the following information about the feature you are requesting.
         Also please make sure that the `\<scope\>` and `\<title\>` in the title are correct.
-        If you are not sure about anything, please ask @kocyba or @aamkye.
+        If you are not sure about anything, please ask @Inetum-Poland/devops-admins or @aamkye.
 
   # Context
   - type: textarea
