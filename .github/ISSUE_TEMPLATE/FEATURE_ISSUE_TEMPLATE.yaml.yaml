@@ -54,25 +54,6 @@ body:
     validations:
       required: true
 
-  # When
-  - type: textarea
-    id: when-feature
-    attributes:
-      label: When will this feature be used?
-      description: Please explain when this feature will be used.
-      placeholder: Ex. After ending a conversation, every night at 3pm, when I sign off.
-    validations:
-      required: true
-
-  # Where
-  - type: textarea
-    id: where-feature
-    attributes:
-      label: Where will this feature be used?
-      description: Please explain where this feature will be used.
-      placeholder: Ex. In the a Supervisor chat box, on the conversation profile page, on the two-factor screen.
-    validations:
-      required: true
 
   # Other Comments
   - type: textarea
