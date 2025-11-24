@@ -25,6 +25,10 @@ on:
       runs-on:
         type: string
         required: false
+      clean-runner:
+        type: boolean
+        required: false
+        default: false
 
 concurrency:
   # Here we use the repository name to avoid conflicts with other repositories
@@ -56,7 +60,7 @@ jobs:
     runs-on: ${{ inputs.runs-on || 'ubuntu-latest' }}
     if: github.event.pull_request.draft == false
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -75,7 +79,7 @@ jobs:
     runs-on: ${{ inputs.runs-on || 'ubuntu-latest' }}
     if: github.event.pull_request.draft == false
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - uses: ./.github/actions/prerequisites
         if: github.repository == 'Inetum-Poland/.github'
@@ -92,7 +96,19 @@ jobs:
     runs-on: ${{ inputs.runs-on || 'ubuntu-latest' }}
     if: github.event.pull_request.draft == false
     steps:
-      - uses: actions/checkout@v4
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@v1.3.1
+        if: inputs.clean-runner == true
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: false
+          docker-images: true
+          swap-storage: true
+
+      - uses: actions/checkout@v6
 
       - uses: ./.github/actions/prerequisites
         if: github.repository == 'Inetum-Poland/.github'
