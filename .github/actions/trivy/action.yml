@@ -6,7 +6,7 @@ runs:
   using: "composite"
   steps:
     - name: Run Trivy vulnerability scanner in fs mode
-      uses: aquasecurity/trivy-action@0.33.1
+      uses: aquasecurity/trivy-action@0.34.2
       with:
         scan-type: "fs"
         scan-ref: "."
